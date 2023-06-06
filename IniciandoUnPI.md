@@ -41,6 +41,8 @@
 
 -  Será necesario que crees, **desde psql (shell o PGAdmin)**, una la base de datos. Si no realizas este paso de manera manual no podrás avanzar con el proyecto.
 
+
+//////////////////////
 -  Colócale el mísmo nombre que aparece en el archivo db.js. En el siguiente ejemplo, **`pi`** sería el nombre de la base de datos:
 
    ```javascript

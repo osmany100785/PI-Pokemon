@@ -1,109 +1,52 @@
-import axios from "axios";
+// Action types
+export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS';
+export const GET_DETAIL_POKEMON = 'GET_DETAIL_POKEMON';
+export const GET_TYPES = 'GET_TYPES';
+export const GET_POKEMON_BY_NAME = 'GET_POKEMON_BY_NAME';
+export const CLEAN_DETAIL = 'CLEAN_DETAIL';
+export const FILTER_TYPES = 'FILTER_TYPES';
+export const FILTER_POKEMONS = 'FILTER_POKEMONS';
+export const ORDER_POKEMONS = 'ORDER_POKEMONS';
+export const CLEAN_INFO_FILTERS = 'CLEAN_INFO_FILTERS';
 
-import {
-  GET_ALL_POKEMONS,
-  GET_DETAIL_POKEMON,
-  GET_TYPES,
-  GET_POKEMON_BY_NAME,
-  CLEAN_DETAIL,
-  FILTER_TYPES,
-  FILTER_POKEMONS,
-  ORDER_POKEMONS,
-  CLEAN_INFO_FILTERS,
-  } from "./typeActions";
+// Action creators
+export const getAllPokemons = () => ({
+  type: GET_ALL_POKEMONS,
+});
 
-export const getAllPokemons = () => {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(`http://localhost:3001/pokemons`);
-      return dispatch({
-        type: GET_ALL_POKEMONS,
-        payload: response.data,
-      });
-    } catch (error) {
-      return dispatch({
-        type: "ERROR",
-        payload: error,
-      });
-    }
-  };
-};
+export const getDetailPokemon = (pokemonId) => ({
+  type: GET_DETAIL_POKEMON,
+  payload: pokemonId,
+});
 
-export const getDetailPokemons = (id) => {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
-      return dispatch({
-        type: GET_DETAIL_POKEMON,
-        payload: response.data,
-      })
-    } catch (error) {
-      return dispatch({
-        type: "ERROR",
-        payload: error,
-      })
-    }
-  };
-};
+export const getTypes = () => ({
+  type: GET_TYPES,
+});
 
-export const getTypes = () => {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(`http://localhost:3001/types`);
-      return dispatch({
-        type: GET_TYPES,
-        payload: response.data,
-      });
-    } catch (error) {
-      return dispatch({
-        type: "ERROR",
-        payload: error,
-      });
-    }
-  };
-};
+export const getPokemonByName = (pokemonName) => ({
+  type: GET_POKEMON_BY_NAME,
+  payload: pokemonName,
+});
 
-export const getByNamePokemon = (name) => {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/pokemons?name=${name}`);
-      return dispatch({
-        type: GET_POKEMON_BY_NAME,
-        payload: response.data,
-      });
-    } catch (error) {
-      return dispatch({
-        type: "ERROR",
-        payload: error,
-      });
-    }
-  };
-};
+export const cleanDetail = () => ({
+  type: CLEAN_DETAIL,
+});
 
-export const createPokemon = (form) => {
-  return function () {
-    axios
-      .post(`http://localhost:3001/pokemons/`, form)
-      
-      .catch((error) =>
-        alert(
-          "The pokemon could not be created: it doesn't have the validation requirements."
-        )
-      );
-  };
-};
-export const cleanDetailPokemon = () => {
-  return { type: CLEAN_DETAIL };};
+export const filterTypes = (selectedTypes) => ({
+  type: FILTER_TYPES,
+  payload: selectedTypes,
+});
 
-export const filterTypesPokemons = (payload) => {
-  return { type: FILTER_TYPES, payload };};
-    
-export const filterPokemons = (payload) => {
-  return { type: FILTER_POKEMONS, payload };};
+export const filterPokemons = (filterValue) => ({
+  type: FILTER_POKEMONS,
+  payload: filterValue,
+});
 
-export const orderPokemons = (payload) => {
-  return { type: ORDER_POKEMONS, payload };};
+export const orderPokemons = (orderOption) => ({
+  type: ORDER_POKEMONS,
+  payload: orderOption,
+});
 
-  export const cleanInfoFilters = () => { return {type: CLEAN_INFO_FILTERS }}  
-
+export const cleanInfoFilters = () => ({
+  type: CLEAN_INFO_FILTERS,
+});

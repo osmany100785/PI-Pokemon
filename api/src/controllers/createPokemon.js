@@ -13,6 +13,8 @@ const createPokemon = async (id,name,image,hp,attack,defense,speed,height,weight
     })
 
 await newPokemon.addType(eachType)
+
 }
 return newPokemon
 };
+module.exports = createPokemon;

@@ -1,8 +1,6 @@
 const axios = require("axios");
 const { Type } = require("../db");
 
-
-
 const findTypes = async () => {
   const response = (await axios.get(`https://pokeapi.co/api/v2/type`)).data
     .results;
